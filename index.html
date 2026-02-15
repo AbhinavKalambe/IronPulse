@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IronPulse Fitness | Elevate Your Potential</title>
+    
+    <!-- Tailwind CSS (Keep in index.html) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Keep in index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (Keep in index.html) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config (Keep in index.html or move to a separate config file if using a build step) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        neon: '#D4FF00', // Neon Volt
+                        dark: '#0A0A0A',
+                        surface: '#1A1A1A',
+                        overlay: 'rgba(0,0,0,0.7)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 
+      INSTRUCTIONS FOR LOCAL USE:
+      1. Create a file named 'style.css'.
+      2. Copy the content between the "style.css" markers below into that file.
+      3. Uncomment the link tag below and remove the <style> block.
+      
+      <link rel="stylesheet" href="style.css">
+    -->
+    
+    
+</head>
+<body class="bg-dark text-white font-sans overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-dark/90 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="dumbbell" class="h-8 w-8 text-neon"></i>
+                    <span class="font-display font-bold text-2xl tracking-wider text-white">IRON<span class="text-neon">PULSE</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-neon transition-colors px-3 py-2 text-sm font-medium tracking-wide">HOME</a>
+                        <a href="#classes" class="hover:text-neon transition-colors px-3 py-2 text-sm font-medium tracking-wide">CLASSES</a>
+                        <a href="#trainers" class="hover:text-neon transition-colors px-3 py-2 text-sm font-medium tracking-wide">TRAINERS</a>
+                        <a href="#membership" class="hover:text-neon transition-colors px-3 py-2 text-sm font-medium tracking-wide">MEMBERSHIP</a>
+                        <button onclick="scrollToContact()" class="bg-neon text-dark hover:bg-white transition-colors px-6 py-2 rounded-sm font-display font-bold uppercase tracking-wider transform hover:-translate-y-1 duration-200">
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-neon focus:outline-none">
+                        <i data-lucide="menu" class="h-8 w-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-surface border-t border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-gray-300 hover:text-neon block px-3 py-2 text-base font-medium">HOME</a>
+                <a href="#classes" class="text-gray-300 hover:text-neon block px-3 py-2 text-base font-medium">CLASSES</a>
+                <a href="#trainers" class="text-gray-300 hover:text-neon block px-3 py-2 text-base font-medium">TRAINERS</a>
+                <a href="#membership" class="text-gray-300 hover:text-neon block px-3 py-2 text-base font-medium">MEMBERSHIP</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden clip-slant">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80" 
+                alt="Gym Background" 
+                class="w-full h-full object-cover"
+                onerror="this.src='https://placehold.co/1920x1080/1a1a1a/FFF?text=Gym+Image'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="max-w-3xl">
+                <p class="text-neon font-display font-bold tracking-widest uppercase mb-4 animate-fade-in-up">Welcome to the Grind</p>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight">
+                    BUILD YOUR <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon to-white">LEGACY</span>
+                </h1>
+                <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl leading-relaxed">
+                    State-of-the-art equipment, elite trainers, and an atmosphere that demands your best. Stop wishing, start working.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="scrollToSection('membership')" class="bg-neon text-dark hover:bg-white px-8 py-4 rounded-sm font-display font-bold text-lg uppercase tracking-wider transition-all transform hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(212,255,0,0.5)]">
+                        Start Your Journey
+                    </button>
+                    <button onclick="scrollToSection('classes')" class="border-2 border-white text-white hover:bg-white hover:text-dark px-8 py-4 rounded-sm font-display font-bold text-lg uppercase tracking-wider transition-all">
+                        View Classes
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="text-neon h-8 w-8"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <div class="bg-neon py-12 relative z-20 -mt-10 mx-4 md:mx-12 rounded-sm shadow-xl">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-dark/10">
+                <div class="p-2">
+                    <h3 class="text-4xl font-display font-bold text-dark">24/7</h3>
+                    <p class="text-dark/80 font-medium mt-1">Access</p>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-4xl font-display font-bold text-dark">50+</h3>
+                    <p class="text-dark/80 font-medium mt-1">Machines</p>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-4xl font-display font-bold text-dark">15+</h3>
+                    <p class="text-dark/80 font-medium mt-1">Trainers</p>
+                </div>
+                <div class="p-2">
+                    <h3 class="text-4xl font-display font-bold text-dark">100%</h3>
+                    <p class="text-dark/80 font-medium mt-1">Results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <section class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-neon font-display font-bold tracking-widest uppercase mb-2">Why IronPulse</h2>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white">REDEFINE YOUR LIMITS</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-surface p-8 rounded-sm border border-white/5 hover:border-neon/50 transition-colors group fade-in-up">
+                    <div class="bg-dark w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/10 group-hover:border-neon">
+                        <i data-lucide="biceps-flexed" class="text-white group-hover:text-neon h-8 w-8 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white mb-4">Premium Equipment</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Train with the best. Our floor is packed with Hammer Strength machines, rogue racks, and Eleiko plates.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-surface p-8 rounded-sm border border-white/5 hover:border-neon/50 transition-colors group fade-in-up" style="transition-delay: 100ms;">
+                    <div class="bg-dark w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/10 group-hover:border-neon">
+                        <i data-lucide="users" class="text-white group-hover:text-neon h-8 w-8 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white mb-4">Expert Community</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        Join a tribe of dedicated individuals. From powerlifters to yogis, we support every fitness journey.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-surface p-8 rounded-sm border border-white/5 hover:border-neon/50 transition-colors group fade-in-up" style="transition-delay: 200ms;">
+                    <div class="bg-dark w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border border-white/10 group-hover:border-neon">
+                        <i data-lucide="zap" class="text-white group-hover:text-neon h-8 w-8 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white mb-4">High-Energy Classes</h4>
+                    <p class="text-gray-400 leading-relaxed">
+                        HIIT, Boxing, Yoga, and Spin. Our classes are designed to push you further than you thought possible.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Section -->
+    <section id="classes" class="py-24 bg-surface relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-neon/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div class="fade-in-up">
+                    <h2 class="text-neon font-display font-bold tracking-widest uppercase mb-2">Our Classes</h2>
+                    <h3 class="text-4xl md:text-5xl font-display font-bold text-white">FIND YOUR RHYTHM</h3>
+                </div>
+                <button class="hidden md:flex items-center gap-2 text-white hover:text-neon transition-colors mt-4 md:mt-0 group">
+                    View Full Schedule <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Class Card 1 -->
+                <div class="group relative overflow-hidden rounded-sm cursor-pointer fade-in-up">
+                    <div class="aspect-[4/5] w-full overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&w=800&q=80" 
+                            alt="Crossfit" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x800/222/FFF?text=Strength'"
+                        >
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-neon font-bold text-sm tracking-wider uppercase mb-2 block">High Intensity</span>
+                        <h4 class="text-2xl font-display font-bold text-white mb-2">CROSS-TRAINING</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300 mb-4">
+                            Functional movements performed at high intensity. Build strength and endurance simultaneously.
+                        </p>
+                        <span class="flex items-center gap-2 text-white font-medium text-sm group-hover:text-neon transition-colors">
+                            Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Class Card 2 -->
+                <div class="group relative overflow-hidden rounded-sm cursor-pointer fade-in-up" style="transition-delay: 100ms;">
+                    <div class="aspect-[4/5] w-full overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=800&q=80" 
+                            alt="Boxing" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x800/222/FFF?text=Boxing'"
+                        >
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-neon font-bold text-sm tracking-wider uppercase mb-2 block">Cardio & Coordination</span>
+                        <h4 class="text-2xl font-display font-bold text-white mb-2">BOXING CLUB</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300 mb-4">
+                            Master the sweet science. Technical drills meets explosive cardio conditioning.
+                        </p>
+                        <span class="flex items-center gap-2 text-white font-medium text-sm group-hover:text-neon transition-colors">
+                            Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Class Card 3 -->
+                <div class="group relative overflow-hidden rounded-sm cursor-pointer fade-in-up" style="transition-delay: 200ms;">
+                    <div class="aspect-[4/5] w-full overflow-hidden">
+                        <img 
+                            src="https://images.unsplash.com/photo-1599447421405-0c3072a73131?auto=format&fit=crop&w=800&q=80" 
+                            alt="Yoga" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            onerror="this.src='https://placehold.co/600x800/222/FFF?text=Yoga'"
+                        >
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <span class="text-neon font-bold text-sm tracking-wider uppercase mb-2 block">Mobility & Balance</span>
+                        <h4 class="text-2xl font-display font-bold text-white mb-2">POWER YOGA</h4>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300 mb-4">
+                            Restore balance and improve flexibility. Essential for recovery and mental focus.
+                        </p>
+                        <span class="flex items-center gap-2 text-white font-medium text-sm group-hover:text-neon transition-colors">
+                            Book Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                 <button class="text-white border-b border-neon pb-1">View Full Schedule</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trainer Section -->
+    <section id="trainers" class="py-24 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-neon font-display font-bold tracking-widest uppercase mb-2">The Team</h2>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white">ELITE COACHING</h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Trainer 1 -->
+                <div class="text-center group fade-in-up">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-2 border-transparent group-hover:border-neon transition-all">
+                        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=400&q=80" alt="Trainer" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white">MARCUS STEELE</h4>
+                    <p class="text-neon text-sm uppercase tracking-wide mb-3">Head Coach</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Specializes in hypertrophy and powerlifting.</p>
+                    <div class="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                        <i data-lucide="twitter" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                    </div>
+                </div>
+
+                <!-- Trainer 2 -->
+                <div class="text-center group fade-in-up" style="transition-delay: 100ms;">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-2 border-transparent group-hover:border-neon transition-all">
+                        <img src="https://images.unsplash.com/photo-1611672585731-fa10603fb9e0?auto=format&fit=crop&w=400&q=80" alt="Trainer" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white">SARAH CONNOR</h4>
+                    <p class="text-neon text-sm uppercase tracking-wide mb-3">HIIT Specialist</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Expert in cardiovascular endurance and fat loss.</p>
+                     <div class="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                        <i data-lucide="linkedin" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                    </div>
+                </div>
+
+                <!-- Trainer 3 -->
+                <div class="text-center group fade-in-up" style="transition-delay: 200ms;">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-2 border-transparent group-hover:border-neon transition-all">
+                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=400&q=80" alt="Trainer" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white">ALEX CHEN</h4>
+                    <p class="text-neon text-sm uppercase tracking-wide mb-3">Yoga & Mobility</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Focuses on injury prevention and flexibility.</p>
+                     <div class="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                        <i data-lucide="facebook" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                    </div>
+                </div>
+
+                <!-- Trainer 4 -->
+                <div class="text-center group fade-in-up" style="transition-delay: 300ms;">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-2 border-transparent group-hover:border-neon transition-all">
+                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=400&q=80" alt="Trainer" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="text-xl font-display font-bold text-white">DAVID ROSS</h4>
+                    <p class="text-neon text-sm uppercase tracking-wide mb-3">Boxing Coach</p>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">Former pro fighter teaching technical striking.</p>
+                     <div class="flex justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i data-lucide="instagram" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                        <i data-lucide="twitter" class="w-4 h-4 text-white hover:text-neon cursor-pointer"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section id="membership" class="py-24 bg-surface clip-slant">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-neon font-display font-bold tracking-widest uppercase mb-2">Join The Club</h2>
+                <h3 class="text-4xl md:text-5xl font-display font-bold text-white">CHOOSE YOUR PATH</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1 -->
+                <div class="bg-dark p-8 rounded-sm border border-white/5 relative hover:border-white/20 transition-all fade-in-up">
+                    <h4 class="text-2xl font-display font-bold text-white mb-2">DAY PASS</h4>
+                    <p class="text-gray-500 text-sm mb-6">Perfect for travelers</p>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$15<span class="text-lg text-gray-500 font-sans font-normal">/day</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Full Gym Access</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Locker Room Access</li>
+                        <li class="flex items-center gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> No Classes</li>
+                    </ul>
+                    <button class="w-full py-3 border border-white text-white font-bold uppercase hover:bg-white hover:text-dark transition-colors">Select Pass</button>
+                </div>
+
+                <!-- Plan 2 (Popular) -->
+                <div class="bg-dark p-8 rounded-sm border-2 border-neon relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(212,255,0,0.1)] fade-in-up" style="transition-delay: 100ms;">
+                    <div class="absolute top-0 right-0 bg-neon text-dark text-xs font-bold px-3 py-1 uppercase">Most Popular</div>
+                    <h4 class="text-2xl font-display font-bold text-white mb-2">IRON PRO</h4>
+                    <p class="text-gray-500 text-sm mb-6">For the dedicated</p>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$59<span class="text-lg text-gray-500 font-sans font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> 24/7 Gym Access</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Unlimited Classes</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Guest Pass (1/mo)</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Free Fitness Assessment</li>
+                    </ul>
+                    <button class="w-full py-3 bg-neon text-dark font-bold uppercase hover:bg-white transition-colors">Join Now</button>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="bg-dark p-8 rounded-sm border border-white/5 relative hover:border-white/20 transition-all fade-in-up" style="transition-delay: 200ms;">
+                    <h4 class="text-2xl font-display font-bold text-white mb-2">ELITE</h4>
+                    <p class="text-gray-500 text-sm mb-6">Complete transformation</p>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$129<span class="text-lg text-gray-500 font-sans font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> All Pro Benefits</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> 2 Personal Training Sessions</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Nutrition Plan</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-neon"></i> Sauna Access</li>
+                    </ul>
+                    <button class="w-full py-3 border border-white text-white font-bold uppercase hover:bg-white hover:text-dark transition-colors">Select Elite</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black pt-20 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="dumbbell" class="h-6 w-6 text-neon"></i>
+                        <span class="font-display font-bold text-xl tracking-wider text-white">IRON<span class="text-neon">PULSE</span></span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        Forging bodies and minds since 2015. We are more than a gym, we are a movement.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="text-white font-bold uppercase tracking-wider mb-4">Explore</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-neon transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Classes</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Schedule</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Trainers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h5 class="text-white font-bold uppercase tracking-wider mb-4">Contact</h5>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> 123 Fitness Blvd, Los Angeles</li>
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4"></i> (555) 123-4567</li>
+                        <li class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> info@ironpulse.com</li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h5 class="text-white font-bold uppercase tracking-wider mb-4">Newsletter</h5>
+                    <p class="text-gray-500 text-sm mb-4">Get training tips and exclusive offers.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="bg-surface text-white px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-neon rounded-l-sm border border-white/10">
+                        <button class="bg-neon text-dark px-4 py-2 font-bold rounded-r-sm hover:bg-white transition-colors">GO</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+                <p>&copy; 2024 IronPulse Fitness. All rights reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+      <script src="script.js"></script>
+
+    
+</body>
+</html>
